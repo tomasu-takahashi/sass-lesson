@@ -1,0 +1,132 @@
+.inner {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@use 'variable' as var;
+
+.test {
+  color: var.$color-text;
+}
+
+.inner {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ↓ここに処理を書く↓ */
+$maxWidth: 1000px;
+$brandColor: #cd6799;
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 1000px;
+  margin: 0 auto;
+  padding: 10px 0;
+  max-width: $maxWidth;
+
+  h1 {
+    text-align: left;
+  }
+
+  &__logo {
+    width: 80px;
+  }
+
+  &__list {
+    display: flex;
+
+    & > li {
+      margin-left: 30px;
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+      
+    &__link {
+      text-decoration: none;
+      color: #666;
+      font: {
+        size: 16px;
+        weight: bold;
+      }
+
+      &:hover {
+        color: $brandColor;
+      }
+    }
+  }
+}
+
+@mixin btn($color) { 
+  display: block;
+  padding: 20px 30px;
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: $color; 
+  text: {
+    decoration: none;
+    align: center;
+  }
+}
+
+.footer {
+  padding: 70px 0;
+  &__sns {
+    &__btn {
+      &.is-facebook {
+        @include btn(#4767b2); // 引数にカラーコードを入れる
+      }
+      &.is-google {
+        @include btn(#eb6f58);
+      }
+      &.is-twitter {
+        @include btn(#20c6f0);
+      }
+      &.is-pinterest {
+        @include btn(#e65b5b);
+      }
+      &.is-behance {
+        @include btn(#3a8dfd);
+      }
+      &.is-dribbble {
+        @include btn(#f67ca7);
+      }
+    }
+
+    &__list {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+
+      & > li {
+        width: 32%;
+
+        &:nth-child(n+4) {
+          margin-top: 20px;
+        }
+      }
+    }
+  }
+}
+
