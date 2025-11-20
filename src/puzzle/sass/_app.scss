@@ -60,24 +60,19 @@ body {
     padding: 40px 0 0 40px;
   }
 
-  &__box__border {
-    background: $white;
-    padding: 5px;
-    width: fit-content;
-
-    &:nth-child(1) {
-      margin-bottom: 10px;
-    }
-
-    &:nth-child(2) {
-      margin-bottom: 10px;
-    }
-  }
-
   @each $name, $color in zip($classNames, $buttonColor) {
     .main__box__#{$name} {
       @include box(140px, 40px);
       background: $color;
+      border: 5px solid $white;
+
+      &:nth-child(1) {
+        margin-bottom: 10px;
+      }
+
+      &:nth-child(2) {
+        margin-bottom: 10px;
+      }
     }
   }
 }
