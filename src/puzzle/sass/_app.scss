@@ -1,0 +1,86 @@
+@use 'utils' as *;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background: #eee;
+}
+
+.header {
+  background: $navy;
+  width: 400px;
+  height: 100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+
+  &__inner {
+    background: $white;
+    padding: 10px;
+    margin: 0 20px 0 0;
+  }
+
+  &__boxes {
+    display: flex;
+    gap: 10px;
+  }
+
+  @each $name, $color in zip($classNames, $buttonColor) {
+    .header__box__#{$name} {
+      @include box(40px, 40px);
+      background: $color;
+    }
+  }
+}
+
+.layout {
+  display: flex;
+  width: 400px;
+  margin: 0 auto;
+}
+
+.sidebar {
+  background: $green;
+  width: 150px;
+  height: 250px;
+}
+
+.main {
+  background: $red;
+  width: 250px;
+  height: 250px;
+
+  &__boxes {
+    padding: 40px 0 0 40px;
+  }
+
+  @each $name, $color in zip($classNames, $buttonColor) {
+    .main__box__#{$name} {
+      @include box(140px, 40px);
+      background: $color;
+      border: 5px solid $white;
+
+      &:nth-child(1) {
+        margin-bottom: 10px;
+      }
+
+      &:nth-child(2) {
+        margin-bottom: 10px;
+      }
+    }
+  }
+}
+
+.footer {
+  background: $brown;
+  width: 400px;
+  height: 100px;
+  margin: 0 auto;
+}
+
